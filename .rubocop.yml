@@ -1,0 +1,153 @@
+require:
+  - 'rubocop-rails'
+  - 'rubocop-rspec'
+  - 'rubocop-performance'
+
+AllCops:
+  TargetRubyVersion: 2.6
+  TargetRailsVersion: 5.2
+
+  Exclude:
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'tmp/**/*'
+    - 'public/**/*'
+    - 'node_modules/**/*'
+    - 'config/initializers/better_errors.rb'
+
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+
+Rails:
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+IfUnlessModifier:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+  Exclude:
+    - 'config/**/*.rb'
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+  Exclude:
+    - 'config/**/*.rb'
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/BlockLength:
+  Max: 30
+  ExcludedMethods:
+    - 'included'
+    - 'class_methods'
+    - 'namespace'
+    - 'task'
+    - 'context'
+    - 'describe'
+    - 'xdescribe'
+    - 'it'
+    - 'xit'
+    - 'factory'
+    - 'define'
+    - 'aasm'
+    - 'Schema'
+  Exclude:
+    - 'config/**/*.rb'
+
+Metrics/ModuleLength:
+  Max: 100
+  Exclude:
+    - 'app/helpers/**/*.rb'
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/LineLength:
+  Max: 120
+  IgnoredPatterns: ['\A#']
+
+Naming/PredicateName:
+  # Predicate name prefixes
+  NamePrefix:
+    - is_
+  # Predicate name prefixes that should be removed
+  NamePrefixBlacklist:
+    - is_
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: 'error'
+
+Naming/VariableNumber:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+Style/YodaCondition:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+# Do not write to stdout. Use Rails' logger if you want to log.
+Rails/Output:
+  Enabled: false
+
+# Tagging a string as html safe may be a security risk, prefer safe_join or other Rails tag helpers instead.
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - test
+    - development
+    - staging
+    - production
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+RSpec/ContextWording:
+  Prefixes:
+    - before
+    - after
+    - when
+    - and
+    - with
+    - without
+
+RSpec/AggregateFailures:
+  Enabled: true
+  Include:
+    - 'spec/**/*.rb'
