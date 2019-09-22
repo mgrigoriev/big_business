@@ -1,5 +1,19 @@
 - content_for :heading do
   Clients
 
-- @clients.each do |client|
-  %p= client.title
+- content_for :heading_action_buttons do
+  = link_to new_client_path do
+    = tag.button('Add client', class: 'btn btn-outline-primary')
+
+%table.table
+  %thead
+    %th Client
+    %th{ style: 'width: 80px'}
+  %tbody
+    - @clients.each do |client|
+      %tr
+        %td= link_to client.title, client_path(client)
+        %td
+          %span.text-nowrap
+            = edit_button client_path(client)
+            = destroy_button client_path(client)
