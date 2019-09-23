@@ -15,6 +15,7 @@ AllCops:
     - 'public/**/*'
     - 'node_modules/**/*'
     - 'config/initializers/better_errors.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
 
   DisplayCopNames: true
   DisplayStyleGuide: true
@@ -146,8 +147,3 @@ RSpec/ContextWording:
     - and
     - with
     - without
-
-RSpec/AggregateFailures:
-  Enabled: true
-  Include:
-    - 'spec/**/*.rb'

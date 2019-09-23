@@ -1,0 +1,24 @@
+- content_for :heading do
+  = @client.title
+
+- content_for :heading_action_buttons do
+  %span.text-nowrap
+    = edit_button edit_client_path(@client)
+    = destroy_button client_path(@client)
+
+%table.table
+  %tr
+    %th{ style: 'width: 20%' } Contact Person Name:
+    %td= @client.name
+  %tr
+    %th Email:
+    %td= mail_to @client.email
+  %tr
+    %th Phone:
+    %td= @client.phone
+  %tr
+    %th Orders:
+    %td
+      = link_to '5 orders', '/'
+
+-#= render 'comments', target: @client

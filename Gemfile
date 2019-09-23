@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'hamlit'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

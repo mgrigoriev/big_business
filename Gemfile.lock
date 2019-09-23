@@ -188,6 +188,9 @@ GEM
     scss_lint (0.58.0)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -243,6 +246,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (~> 5)
   scss_lint
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   web-console (>= 3.3.0)

@@ -1,0 +1,10 @@
+.col-md-5.well
+  = simple_form_for @client do |f|
+    = f.input :title
+    = f.input :name
+    = f.input :email
+    = f.input :phone
+
+    .form-group
+      = f.button :submit,'Save', class: 'btn btn-primary'
+      = link_to 'Cancel', :back, class: 'btn btn-secondary float-right'
