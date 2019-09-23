@@ -3,6 +3,7 @@
 class CreateClients < ActiveRecord::Migration[6.0]
   def change
     create_table :clients do |t|
+      t.string :slug
       t.string :title
       t.string :name
       t.string :email
@@ -10,5 +11,7 @@ class CreateClients < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :clients, :slug, unique: true
   end
 end

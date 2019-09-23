@@ -17,6 +17,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'hamlit'
 gem 'simple_form'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

@@ -31,6 +31,7 @@ CREATE TABLE public.ar_internal_metadata (
 
 CREATE TABLE public.clients (
     id bigint NOT NULL,
+    slug character varying,
     title character varying,
     name character varying,
     email character varying,
@@ -97,6 +98,13 @@ ALTER TABLE ONLY public.clients
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: index_clients_on_slug; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_clients_on_slug ON public.clients USING btree (slug);
 
 
 --

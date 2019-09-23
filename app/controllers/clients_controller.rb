@@ -44,6 +44,6 @@ class ClientsController < ApplicationController
   end
 
   def set_client
-    @client = Client.find(params[:id])
+    @client = Client.friendly.find(params[:id])
   end
 end
