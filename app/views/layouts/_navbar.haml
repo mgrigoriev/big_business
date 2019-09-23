@@ -1,5 +1,6 @@
 .container.d-flex.flex-column.flex-md-row.align-items-center.pt-3.pb-2
-  %h5.my-0.mr-md-auto.font-weight-normal Big Business
+  %h5.my-0.mr-md-auto.font-weight-normal
+    = link_to 'Big Business', root_path, class: 'logo'
   %nav.my-2.my-md-0.mr-md-3
     = link_to 'Clients', clients_path, class: 'p-2 text-dark'
     = link_to 'Orders', '#', class: 'p-2 text-dark'
