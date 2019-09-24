@@ -5,6 +5,11 @@
     = link_to 'Clients', clients_path, class: 'p-2 text-dark'
     = link_to 'Orders', '#', class: 'p-2 text-dark'
     = link_to 'Reports', '#', class: 'p-2 text-dark'
-  %a.btn.btn-outline-primary{:href => "#"} Sign up
+
+  - if user_signed_in?
+    %button.btn.btn-sm.btn-outline-secondary.dropdown-toggle.shadow-none{type: 'button', data: { toggle: 'dropdown'}, aria: { haspopup: 'true'}, aria: { expanded: 'false'}}
+      = current_user.name
+    .dropdown-menu
+      = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
 
 .border-bottom.shadow-sm.p-1.mb-3

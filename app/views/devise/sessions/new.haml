@@ -1,0 +1,12 @@
+- content_for :heading do
+  Log in
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = f.input :email, required: false, input_html: { value: 'demo@example.com' }
+  = f.input :password, required: false, input_html: { value: 'password' }
+
+  = f.button :submit, 'Log in', class: 'btn btn-primary'
+
+.mt-5.text-muted
+  Email / password:
+  %i demo@example.com / password
