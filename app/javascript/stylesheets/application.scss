@@ -1,5 +1,5 @@
 // Bootstrap
-@import 'custom';
+@import 'variables';
 @import '~bootstrap/scss/bootstrap';
 
 // FontAwesome
@@ -16,4 +16,8 @@ $fa-font-path: '~@fortawesome/fontawesome-free-webfonts/webfonts';
     font-weight: $font-weight-bold;
     text-decoration: none;
   }
+}
+
+th {
+  background-color: #eee;
 }
