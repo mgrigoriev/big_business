@@ -20,6 +20,9 @@ gem 'simple_form'
 gem 'friendly_id'
 gem 'devise'
 
+gem 'faker'
+gem 'annotate'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
@@ -32,6 +35,8 @@ group :development, :test do
   gem 'rubocop-rspec', require: false
   gem 'rubocop-performance', require: false
   gem 'scss_lint', require: false
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -39,4 +44,9 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
