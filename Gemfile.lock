@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.1, >= 2.1.8)
+    ajax-datatables-rails (1.0.0)
+      railties (>= 4.2)
     annotate (3.0.0)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 13.0)
@@ -273,6 +275,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ajax-datatables-rails
   annotate
   bootsnap (>= 1.4.2)
   byebug

@@ -5,15 +5,11 @@
   = link_to new_client_path do
     = tag.button('Add client', class: 'btn btn-primary')
 
-%table.table
+%table#clients-datatable.table{ data: { source: clients_path(user: current_user, format: :json) } }
   %thead
-    %th Client
-    %th{ style: 'width: 80px'}
+    %th ID
+    %th Title
+    %th Name
+    %th Email
+    %th Phone
   %tbody
-    - @clients.each do |client|
-      %tr
-        %td= link_to client.title, client_path(client)
-        %td
-          %span.text-nowrap
-            = edit_button client_path(client)
-            = destroy_button client_path(client)
