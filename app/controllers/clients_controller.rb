@@ -3,6 +3,7 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client, only: %i[show edit update destroy]
+  before_action :set_filter_params, only: :index
 
   def index
     respond_to do |format|
@@ -49,5 +50,9 @@ class ClientsController < ApplicationController
 
   def set_client
     @client = Client.friendly.find(params[:id])
+  end
+
+  def set_filter_params
+    @filter_params = params.fetch(:filter, {})
   end
 end

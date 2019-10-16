@@ -23,6 +23,6 @@ class ClientDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Client.all
+    Client.search(params[:filter])
   end
 end

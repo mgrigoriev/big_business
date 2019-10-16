@@ -1,0 +1,7 @@
+.card.js-clients__filter
+  .card-header
+    Filter
+  .card-body
+    %form.js-clients__filter-form
+      .form-group
+        %input.form-control.js-clients__filter-term{ placeholder: 'Search clients by title, name or email', value: "#{@filter_params[:term]}" }
