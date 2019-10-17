@@ -1,0 +1,9 @@
+.logo {
+  &,
+  &:visited,
+  &:hover {
+    text-decoration: none;
+    color: $gray-900;
+    font-weight: $font-weight-bold;
+  }
+}

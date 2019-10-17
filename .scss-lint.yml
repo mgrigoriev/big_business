@@ -1,3 +1,16 @@
 scss_files:
   - 'app/assets/stylesheets/**/*.scss'
   - 'app/javascript/**/*.scss'
+
+linters:
+  DisableLinterReason:
+    enabled: true
+
+  NestingDepth:
+    max_depth: 5
+
+  PropertySortOrder:
+    order: concentric
+
+  SelectorFormat:
+    convention: hyphenated_BEM

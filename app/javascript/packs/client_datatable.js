@@ -32,12 +32,11 @@ class ClientDatatable {
         }
       },
       'pagingType': 'full_numbers',
-      // 'dom':
-      //    "<'row'<'col-sm-12'tr>>" +
-      //    "<'well'" +
-      //      "<'row'<'col-sm-5'i><'col-sm-7'p>>" +
-      //      "<'row'<'col-sm-12'l>>" +
-      //    ">",
+      'dom':
+         "<'row'<'col-sm-12'tr>>" +
+         "<'datatable__controls-wrapper'" +
+           "<'row'<'col-sm-5'i><'col-sm-7'p>>" +
+         ">",
       'columns': [
         {'data': 'id'},
         {'data': 'title'},
