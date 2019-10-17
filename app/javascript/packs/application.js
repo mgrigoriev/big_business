@@ -11,6 +11,6 @@ require('datatables.net-bs4')(window, $)
 import 'bootstrap'
 
 // Custom modules
-import './bootstrap_extra_init'
-import './clients_datatable'
+import './tooltips'
+import './client_datatable'
 import '../stylesheets/application'
