@@ -91,6 +91,7 @@ GEM
     faker (2.4.0)
       i18n (~> 1.6.0)
     ffi (1.11.1)
+    foreman (0.86.0)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     globalid (0.4.2)
@@ -283,6 +284,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  foreman
   friendly_id
   hamlit
   jbuilder (~> 2.7)
