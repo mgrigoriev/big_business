@@ -1,0 +1,30 @@
+---
+parser: babel-eslint
+
+extends:
+  - airbnb-base
+  - prettier
+
+plugins:
+  - import
+
+env:
+  browser: true
+  node: true
+  jest: true
+
+rules:
+  camelcase: 1
+  no-console: "error"
+  import/no-named-as-default: 0
+  import/no-extraneous-dependencies: 0
+  import/no-unresolved: 0
+  import/extensions: 0
+
+settings:
+  import/ignore:
+    - \.(scss|less|css)$
+
+globals:
+  $: false
+  airbrakeJs: false
