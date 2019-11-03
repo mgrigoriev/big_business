@@ -1,9 +1,16 @@
-.logo {
+.navbar__link {
   &,
   &:visited,
   &:hover {
     text-decoration: none;
-    color: $gray-900;
-    font-weight: $font-weight-bold;
+    color: $gray-100;
   }
+}
+
+.navbar__logo {
+  font-weight: 500;
+}
+
+.bg-dark {
+  background-color: $gray-700 !important;
 }
