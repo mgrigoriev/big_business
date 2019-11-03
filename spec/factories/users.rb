@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
-  devise :database_authenticatable, :recoverable, :rememberable, :validatable
+FactoryBot.define do
+  factory :user do
+    name { Faker::Name.unique.name }
+    email { Faker::Internet.unique.email }
+    password { '123456' }
+    password_confirmation { '123456' }
+    admin { false }
+  end
 
-  def remember_me
-    true
+  trait :admin do
+    admin { true }
   end
 end
 

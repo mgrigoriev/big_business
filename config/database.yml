@@ -9,4 +9,4 @@ development:
 
 test:
   <<: *default
-  database: big_business_new_test
+  database: big_business_test

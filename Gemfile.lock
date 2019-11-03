@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.1, >= 2.1.8)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     ajax-datatables-rails (1.0.0)
       railties (>= 4.2)
     annotate (3.0.0)
@@ -70,6 +72,18 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
+    capybara (3.29.0)
+      addressable
+      mini_mime (>= 0.1.3)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      regexp_parser (~> 1.5)
+      xpath (~> 3.2)
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
+    childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
@@ -144,6 +158,7 @@ GEM
     pry-stack_explorer (0.4.9.3)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    public_suffix (4.0.1)
     puma (3.12.1)
     rack (2.0.7)
     rack-contrib (2.1.0)
@@ -183,6 +198,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    regexp_parser (1.6.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -219,6 +235,7 @@ GEM
       rubocop (>= 0.60.0)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
+    rubyzip (2.0.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -233,6 +250,9 @@ GEM
     scss_lint (0.58.0)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
+    selenium-webdriver (3.142.6)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
     simple_form (4.1.0)
@@ -263,6 +283,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (4.1.3)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webpacker (4.0.7)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -270,6 +294,8 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    xpath (3.2.0)
+      nokogiri (~> 1.8)
     zeitwerk (2.1.10)
 
 PLATFORMS
@@ -280,6 +306,8 @@ DEPENDENCIES
   annotate
   bootsnap (>= 1.4.2)
   byebug
+  capybara
+  capybara-selenium
   database_cleaner
   devise
   factory_bot_rails
@@ -309,6 +337,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   web-console (>= 3.3.0)
+  webdrivers
   webpacker (~> 4.0)
 
 RUBY VERSION
