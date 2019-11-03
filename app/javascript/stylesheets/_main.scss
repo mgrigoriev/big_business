@@ -1,3 +1,11 @@
+.bg-dark {
+  background-color: $gray-700 !important;
+}
+
+.navbar__logo {
+  font-weight: 500;
+}
+
 .navbar__link {
   &,
   &:visited,
@@ -7,10 +15,10 @@
   }
 }
 
-.navbar__logo {
-  font-weight: 500;
+.filter__options-wrapper--active {
+  background-color: #fef9b8;
 }
 
-.bg-dark {
-  background-color: $gray-700 !important;
+.filter__option--active {
+  border: 2px solid #81bdc9;
 }

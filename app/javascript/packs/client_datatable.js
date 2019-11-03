@@ -2,18 +2,15 @@ class ClientDatatable {
   constructor() {
     // Selectors
     this.dataTableSelector = '#clients-datatable';
-    this.filtersSelector = '.js-clients__filter-term';
     this.termFieldSelector = '.js-clients__filter-term';
 
     // Bind 'this'
     this.init = this.init.bind(this);
     this.initDataTable = this.initDataTable.bind(this);
-    this.redraw = this.redraw.bind(this);
   }
 
   init() {
     $(document).ready(this.initDataTable);
-    $(document).on('keyup change paste', this.filtersSelector, this.redraw);
   }
 
   initDataTable() {
@@ -47,10 +44,6 @@ class ClientDatatable {
         // $('.profit-amount').html(response.profitAmount);
       }
     });
-  }
-
-  redraw() {
-    this.dataTable.fnDraw();
   }
 }
 
