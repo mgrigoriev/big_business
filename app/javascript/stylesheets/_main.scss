@@ -1,24 +1,30 @@
-.bg-dark {
-  background-color: $gray-700 !important;
+.navbar-dark {
+  background-color: $gray-700;
 }
 
-.navbar__logo {
-  font-weight: 500;
-}
+.navbar {
+  .navbar__logo {
+    font-weight: 500;
+  }
 
-.navbar__link {
-  &,
-  &:visited,
-  &:hover {
-    text-decoration: none;
-    color: $gray-100;
+  .navbar__link {
+    &,
+    &:visited,
+    &:hover {
+      text-decoration: none;
+      color: $gray-100;
+    }
   }
 }
 
-.filter__options-wrapper--active {
-  background-color: #fef9b8;
-}
+.filter {
+  margin-bottom: 40px;
 
-.filter__option--active {
-  border: 2px solid #81bdc9;
+  .filter__options-wrapper--active {
+    background-color: $light-yellow;
+  }
+
+  .filter__option--active {
+    border: 2px solid $blue;
+  }
 }
