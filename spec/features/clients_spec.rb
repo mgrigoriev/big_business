@@ -37,9 +37,13 @@ feature 'User can manage clients:' do
   describe 'list and filter' do
     given!(:clients) { create_list(:client, 3) }
 
-    background { visit clients_path }
+    background do
+      visit clients_path
+    end
 
     scenario 'without filter', js: true do
+      wait_for_ajax
+
       clients.each do |client|
         expect(page).to have_content(client.title).
           and(have_content(client.name)).
@@ -50,6 +54,7 @@ feature 'User can manage clients:' do
 
     scenario 'by title', js: true do
       fill_in 'filter-term', with: clients.third.title
+      wait_for_ajax
 
       expect(page).to     have_content clients.third.title
       expect(page).to_not have_content clients.first.title
@@ -58,6 +63,7 @@ feature 'User can manage clients:' do
 
     scenario 'by name', js: true do
       fill_in 'filter-term', with: clients.first.name
+      wait_for_ajax
 
       expect(page).to     have_content clients.first.title
       expect(page).to_not have_content clients.second.title
@@ -66,6 +72,7 @@ feature 'User can manage clients:' do
 
     scenario 'by email', js: true do
       fill_in 'filter-term', with: clients.second.email
+      wait_for_ajax
 
       expect(page).to     have_content clients.second.title
       expect(page).to_not have_content clients.first.title
@@ -76,7 +83,10 @@ feature 'User can manage clients:' do
   describe 'editing' do
     given!(:client) { create(:client) }
 
-    background { visit clients_path }
+    background do
+      visit clients_path
+      wait_for_ajax
+    end
 
     scenario 'edits client', js: true do
       click_on "edit-#{client.id}"
@@ -98,12 +108,17 @@ feature 'User can manage clients:' do
   describe 'deleting' do
     given!(:client) { create(:client) }
 
-    background { visit clients_path }
+    background do
+      visit clients_path
+      wait_for_ajax
+    end
 
     scenario 'deletes client', js: true do
       expect(page).to have_content client.title
 
-      click_on "delete-#{client.id}"
+      accept_confirm 'Are you sure?' do
+        click_on "delete-#{client.id}"
+      end
 
       expect(current_path).to eq clients_path
       expect(page).to_not have_content client.title

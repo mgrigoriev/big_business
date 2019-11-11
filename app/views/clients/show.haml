@@ -2,9 +2,7 @@
   = @client.title
 
 - content_for :heading_action_buttons do
-  %span.text-nowrap
-    = edit_button edit_client_path(@client)
-    = destroy_button client_path(@client)
+  = manage_buttons_for(@client, edit_path: edit_client_path(@client), destroy_path: client_path(@client))
 
 %table.table
   %tr

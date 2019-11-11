@@ -20,6 +20,7 @@ gem 'hamlit'
 gem 'simple_form'
 gem 'friendly_id'
 gem 'devise'
+gem 'draper'
 
 gem 'faker'
 gem 'annotate'
@@ -52,6 +53,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'capybara'
-  gem 'capybara-selenium'
+  gem 'selenium-webdriver'
   gem 'webdrivers'
 end
