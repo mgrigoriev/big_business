@@ -21,6 +21,7 @@ gem 'simple_form'
 gem 'friendly_id'
 gem 'devise'
 gem 'draper'
+gem 'gon'
 
 gem 'faker'
 gem 'annotate'

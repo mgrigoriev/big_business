@@ -7,7 +7,7 @@
 
 = render 'filter'
 
-%table#clients-datatable.table{ data: { source: clients_path(user: current_user, format: :json) } }
+%table#clients-datatable.table.js-datatable{ data: { source: clients_path(user: current_user, format: :json) } }
   %thead
     %th ID
     %th Title

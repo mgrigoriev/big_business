@@ -56,27 +56,33 @@ feature 'User can manage clients:' do
       fill_in 'filter-term', with: clients.third.title
       wait_for_ajax
 
-      expect(page).to     have_content clients.third.title
-      expect(page).to_not have_content clients.first.title
-      expect(page).to_not have_content clients.second.title
+      within '.js-datatable--filtered' do
+        expect(page).to     have_content clients.third.title
+        expect(page).not_to have_content clients.first.title
+        expect(page).not_to have_content clients.second.title
+      end
     end
 
     scenario 'by name', js: true do
       fill_in 'filter-term', with: clients.first.name
       wait_for_ajax
 
-      expect(page).to     have_content clients.first.title
-      expect(page).to_not have_content clients.second.title
-      expect(page).to_not have_content clients.third.title
+      within '.js-datatable--filtered' do
+        expect(page).to     have_content clients.first.title
+        expect(page).not_to have_content clients.second.title
+        expect(page).not_to have_content clients.third.title
+      end
     end
 
     scenario 'by email', js: true do
       fill_in 'filter-term', with: clients.second.email
       wait_for_ajax
 
-      expect(page).to     have_content clients.second.title
-      expect(page).to_not have_content clients.first.title
-      expect(page).to_not have_content clients.third.title
+      within '.js-datatable--filtered' do
+        expect(page).to     have_content clients.second.title
+        expect(page).not_to have_content clients.first.title
+        expect(page).not_to have_content clients.third.title
+      end
     end
   end
 
@@ -121,7 +127,7 @@ feature 'User can manage clients:' do
       end
 
       expect(current_path).to eq clients_path
-      expect(page).to_not have_content client.title
+      expect(page).not_to have_content client.title
     end
   end
 end

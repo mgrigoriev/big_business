@@ -9,11 +9,18 @@ class Filter {
     this.init = this.init.bind(this);
     this.redraw = this.redraw.bind(this);
     this.resetFilter = this.resetFilter.bind(this);
+    this.debounce = this.debounce.bind(this);
   }
 
   init() {
-    $(document).on('keyup change paste', this.filterOptionsSelector, this.redraw);
     $(document).on('click', this.resetLinkSelector, this.resetFilter);
+    $(document).on('paste', this.filterOptionsSelector, this.redraw);
+
+    if (App.env == 'test') {
+      $(document).on('keyup', this.filterOptionsSelector, this.redraw);
+    } else {
+      $(document).on('keyup', this.filterOptionsSelector, this.debounce(this.redraw, 400));
+    }
   }
 
   redraw() {
@@ -45,9 +52,23 @@ class Filter {
     });
 
     if (filterIsActive) {
-      $(this.filterOptionsWrapperSelector).addClass('filter__options-wrapper--active')
+      $(this.filterOptionsWrapperSelector).addClass('filter__options-wrapper--active');
+      $('.js-datatable').addClass('js-datatable--filtered');
     } else {
-      $(this.filterOptionsWrapperSelector).removeClass('filter__options-wrapper--active')
+      $(this.filterOptionsWrapperSelector).removeClass('filter__options-wrapper--active');
+      $('.js-datatable').removeClass('js-datatable--filtered');
+    }
+  }
+
+  debounce(f, ms) {
+    let isCooldown = false;
+
+    return function() {
+      if (isCooldown) return;
+
+      f.apply(this, arguments);
+      isCooldown = true;
+      setTimeout(() => isCooldown = false, ms);
     }
   }
 }
