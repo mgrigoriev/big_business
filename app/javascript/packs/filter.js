@@ -1,3 +1,5 @@
+const App = window.App || {};
+
 class Filter {
   constructor() {
     // Selectors
@@ -9,17 +11,16 @@ class Filter {
     this.init = this.init.bind(this);
     this.redraw = this.redraw.bind(this);
     this.resetFilter = this.resetFilter.bind(this);
-    this.debounce = this.debounce.bind(this);
   }
 
   init() {
     $(document).on('click', this.resetLinkSelector, this.resetFilter);
     $(document).on('paste', this.filterOptionsSelector, this.redraw);
 
-    if (App.env == 'test') {
+    if (App.env === 'test') {
       $(document).on('keyup', this.filterOptionsSelector, this.redraw);
     } else {
-      $(document).on('keyup', this.filterOptionsSelector, this.debounce(this.redraw, 400));
+      $(document).on('keyup', this.filterOptionsSelector, Filter.debounce(this.redraw, 400));
     }
   }
 
@@ -60,15 +61,14 @@ class Filter {
     }
   }
 
-  debounce(f, ms) {
-    let isCooldown = false;
+  static debounce(fn, time) {
+    let timeout;
 
-    return function() {
-      if (isCooldown) return;
+    return function callFunction(...args) {
+      const functionCall = () => fn.apply(this, args);
 
-      f.apply(this, arguments);
-      isCooldown = true;
-      setTimeout(() => isCooldown = false, ms);
+      clearTimeout(timeout);
+      timeout = setTimeout(functionCall, time);
     }
   }
 }
