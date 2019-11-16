@@ -20,7 +20,7 @@ feature 'User can manage clients:' do
       fill_in 'Phone', with: '111222333'
       click_on 'Save'
 
-      expect(current_path).to eq client_path(Client.last)
+      expect(page).to have_current_path client_path(Client.last)
 
       ['The first client', 'John', 'john@example.com', '111222333'].each do |value|
         expect(page).to have_content(value)
@@ -45,10 +45,10 @@ feature 'User can manage clients:' do
       wait_for_ajax
 
       clients.each do |client|
-        expect(page).to have_content(client.title).
-          and(have_content(client.name)).
-          and(have_content(client.email)).
-          and(have_content(client.phone))
+        expect(page).to have_content(client.title)
+          .and(have_content(client.name))
+          .and(have_content(client.email))
+          .and(have_content(client.phone))
       end
     end
 
@@ -103,7 +103,7 @@ feature 'User can manage clients:' do
       fill_in 'Phone', with: '111222333'
       click_on 'Save'
 
-      expect(current_path).to eq client_path(client)
+      expect(page).to have_current_path client_path(client)
 
       ['The first client', 'John', 'john@example.com', '111222333'].each do |value|
         expect(page).to have_content(value)
@@ -126,7 +126,7 @@ feature 'User can manage clients:' do
         click_on "delete-#{client.id}"
       end
 
-      expect(current_path).to eq clients_path
+      expect(page).to have_current_path clients_path
       expect(page).not_to have_content client.title
     end
   end

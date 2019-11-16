@@ -8,7 +8,7 @@ class Client < ApplicationRecord
 
   scope :by_title, -> { order(:title) }
 
-  scope :search, ->(filter) do
+  scope :search, lambda { |filter|
     if filter[:term].present?
       where_sql = <<~SQL.squish
         clients.title ILIKE ? OR
@@ -17,9 +17,9 @@ class Client < ApplicationRecord
         clients.id::TEXT LIKE ?
       SQL
 
-      where(where_sql, "%#{filter[:term]}%", "%#{filter[:term]}%", "%#{filter[:term]}%", "#{filter[:term]}")
+      where(where_sql, "%#{filter[:term]}%", "%#{filter[:term]}%", "%#{filter[:term]}%", (filter[:term]).to_s)
     end
-  end
+  }
 end
 
 # == Schema Information

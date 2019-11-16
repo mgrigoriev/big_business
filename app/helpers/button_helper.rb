@@ -8,9 +8,7 @@ module ButtonHelper
     tag.span("#{edit_button} #{destroy_button}".html_safe, class: 'text-nowrap')
   end
 
-  def edit_button_for(resource, path: path)
-    return if path.blank?
-
+  def edit_button_for(resource, path:)
     link_to path do
       tag.button(
         tag.i(class: 'fas fa-pencil-alt'),
@@ -22,9 +20,7 @@ module ButtonHelper
     end
   end
 
-  def destroy_button_for(resource, path: path)
-    return if path.blank?
-
+  def destroy_button_for(resource, path:)
     link_to path, method: :delete, data: { confirm: 'Are you sure?' } do
       tag.button(
         tag.i(class: 'far fa-trash-alt'),

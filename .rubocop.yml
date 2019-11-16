@@ -22,6 +22,11 @@ AllCops:
   DisplayStyleGuide: true
   ExtraDetails: true
 
+# Using rspec methods such as 'it' for scenarios can result in weird phrasing.
+Capybara/FeatureMethods:
+  Description: Checks for consistent method usage in feature specs.
+  Enabled: false
+
 Rails:
   Enabled: true
 
@@ -62,6 +67,7 @@ Metrics/BlockLength:
     - 'Schema'
   Exclude:
     - 'config/**/*.rb'
+    - spec/**/*.rb
 
 Metrics/ModuleLength:
   Max: 100

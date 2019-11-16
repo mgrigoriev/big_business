@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClientDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
@@ -33,7 +35,7 @@ class ClientDatatable < AjaxDatatablesRails::ActiveRecord
     end
   end
 
-  def get_raw_records
+  def get_raw_records # rubocop:disable Naming/AccessorMethodName
     Client.search(params[:filter])
   end
 end
