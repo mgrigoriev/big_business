@@ -10,3 +10,4 @@ development:
 test:
   <<: *default
   database: big_business_test
+  username: postgres
