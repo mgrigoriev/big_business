@@ -1,0 +1,114 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node-browsers
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+          TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+
+      - image: circleci/postgres:11.1-alpine
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: big_business_test
+          TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+
+      - image: circleci/redis:5-alpine
+        environment:
+          TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+
+    steps:
+      - checkout
+
+      - run:
+          name: Import PostgreSQL repository signing key
+          command: wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+      - run:
+          name: Import Node.js repository signing key
+          command: wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
+
+      - run:
+          name: Import Yarn repository signing key
+          command: wget --quiet -O - https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
+      - run:
+          name: Add PostgreSQL apt repository
+          command: echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' | sudo tee /etc/apt/sources.list.d/pgdg.list
+
+      - run:
+          name: Add Node.js apt repository
+          command: echo 'deb https://deb.nodesource.com/node_11.x stretch main' | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+      - run:
+          name: Add Yarn apt repository
+          command: echo 'deb https://dl.yarnpkg.com/debian/ stable main' | sudo tee /etc/apt/sources.list.d/yarn.list
+
+      - run:
+          name: Install apt-transport-https
+          command: sudo apt-get install -y apt-transport-https
+
+      - run:
+          name: Install required software
+          command: sudo apt-get update -qq && sudo apt-get install -y postgresql-client-11 nodejs yarn
+
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+
+      - restore_cache:
+          keys:
+            - v1-big-business-bundle-{{ checksum "Gemfile.lock" }}
+            - v1-big-business-bundle-
+
+      - run:
+          name: Bundle install
+          command: bundle install --path vendor/bundle
+
+      - save_cache:
+          key: v1-big-business-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - restore_cache:
+          keys:
+            - v1-big-business-yarn-{{ checksum "yarn.lock" }}
+            - v1-big-business-yarn-
+
+      - run:
+          name: Yarn install
+          command: yarn
+
+      - save_cache:
+          key: v1-big-business-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Wait for Redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bundle exec rake db:structure:load
+
+      - run:
+          name: Tests
+          command: bundle exec rake
+
+      - store_artifacts:
+          path: coverage
+          destination: coverage
+
+      - store_test_results:
+          path: tmp/test-results
