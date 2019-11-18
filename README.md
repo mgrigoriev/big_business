@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![CircleCI](https://img.shields.io/circleci/build/github/mgrigoriev/big_business/master?token=41cc0df7c83a0bcbb71ae8a52b3e8a3ae4bdb5e3)
