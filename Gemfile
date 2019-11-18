@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 
-gem 'sass-rails', '~> 5'
+gem 'sass-rails', '~> 6'
 gem 'webpacker', '~> 4.2'
 gem 'jbuilder', '~> 2.7'
 gem 'ajax-datatables-rails'
