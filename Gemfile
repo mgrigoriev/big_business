@@ -38,7 +38,7 @@ group :development, :test do
   gem 'rubocop-rspec', require: false
   gem 'rubocop-performance', require: false
   gem 'scss_lint', require: false
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 3.9'
   gem 'factory_bot_rails'
 end
 
