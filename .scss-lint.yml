@@ -14,3 +14,5 @@ linters:
 
   SelectorFormat:
     convention: hyphenated_BEM
+    exclude:
+      - 'app/javascript/stylesheets/_datatables.scss'

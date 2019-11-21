@@ -8,7 +8,6 @@ th {
   background-color: $gray-100;
   padding: 20px;
 
-  // Overriding DataTable default style
   .pagination {
     margin: 0;
 
@@ -17,11 +16,20 @@ th {
     }
   }
 
-  // Overriding DataTables default style
-  // scss-lint:disable SelectorFormat
   .dataTables_info {
     padding-top: 5px;
     color: $gray-600;
   }
-  // scss-lint:enable SelectorFormat
+}
+
+.dataTable th {
+  &::before,
+  &::after {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  &.sorting_desc,
+  &.sorting_asc {
+    background-color: $gray-300;
+  }
 }
