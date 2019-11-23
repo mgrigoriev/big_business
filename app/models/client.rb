@@ -17,7 +17,7 @@ class Client < ApplicationRecord
         clients.id::TEXT LIKE ?
       SQL
 
-      where(where_sql, "%#{filter[:term]}%", "%#{filter[:term]}%", "%#{filter[:term]}%", (filter[:term]).to_s)
+      where(where_sql, "%#{filter[:term]}%", "%#{filter[:term]}%", "%#{filter[:term]}%", filter[:term])
     end
   }
 end
