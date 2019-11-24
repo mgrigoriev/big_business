@@ -2,13 +2,12 @@
 
 require 'rails_helper'
 
-RSpec.describe Client, type: :model do
+RSpec.describe Order, type: :model do
   describe 'associations' do
-    it { is_expected.to have_many(:orders).dependent(:restrict_with_error) }
+    it { is_expected.to belong_to(:client) }
   end
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_uniqueness_of(:title) }
   end
 end

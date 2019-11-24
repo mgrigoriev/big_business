@@ -22,9 +22,12 @@ gem 'friendly_id'
 gem 'devise'
 gem 'draper'
 gem 'gon'
+gem 'money-rails'
 
 gem 'faker'
 gem 'annotate'
+
+gem 'strong_migrations'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

@@ -9,6 +9,17 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: orders_status; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.orders_status AS ENUM (
+    'pending',
+    'in_progress',
+    'done'
+);
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -58,6 +69,47 @@ CREATE SEQUENCE public.clients_id_seq
 --
 
 ALTER SEQUENCE public.clients_id_seq OWNED BY public.clients.id;
+
+
+--
+-- Name: orders; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.orders (
+    id bigint NOT NULL,
+    client_id bigint NOT NULL,
+    title character varying,
+    status public.orders_status DEFAULT 'pending'::public.orders_status NOT NULL,
+    invoice_number integer,
+    invoice_date date,
+    price_cents integer DEFAULT 0 NOT NULL,
+    price_currency character varying DEFAULT 'USD'::character varying NOT NULL,
+    cost_cents integer DEFAULT 0 NOT NULL,
+    cost_currency character varying DEFAULT 'USD'::character varying NOT NULL,
+    payed_amount_cents integer DEFAULT 0 NOT NULL,
+    payed_amount_currency character varying DEFAULT 'USD'::character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.orders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.orders_id_seq OWNED BY public.orders.id;
 
 
 --
@@ -114,6 +166,13 @@ ALTER TABLE ONLY public.clients ALTER COLUMN id SET DEFAULT nextval('public.clie
 
 
 --
+-- Name: orders id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.orders ALTER COLUMN id SET DEFAULT nextval('public.orders_id_seq'::regclass);
+
+
+--
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -134,6 +193,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.clients
     ADD CONSTRAINT clients_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
 
 
 --
@@ -160,6 +227,20 @@ CREATE UNIQUE INDEX index_clients_on_slug ON public.clients USING btree (slug);
 
 
 --
+-- Name: index_orders_on_client_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_orders_on_client_id ON public.orders USING btree (client_id);
+
+
+--
+-- Name: index_orders_on_status; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_orders_on_status ON public.orders USING btree (status);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -174,6 +255,14 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 
 
 --
+-- Name: orders fk_rails_5c8e53c896; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT fk_rails_5c8e53c896 FOREIGN KEY (client_id) REFERENCES public.clients(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -181,6 +270,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20190917144913'),
-('20190924151116');
+('20190924151116'),
+('20191124204907');
 
 

@@ -6,6 +6,8 @@ class Client < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
 
+  has_many :orders, dependent: :restrict_with_error
+
   scope :by_title, -> { order(:title) }
 
   scope :search, lambda { |filter|
