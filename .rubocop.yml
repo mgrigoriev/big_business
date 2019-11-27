@@ -113,6 +113,9 @@ Style/YodaCondition:
 Bundler/OrderedGems:
   Enabled: false
 
+Rails/RakeEnvironment:
+  Enabled: false
+
 # Do not write to stdout. Use Rails' logger if you want to log.
 Rails/Output:
   Enabled: false
