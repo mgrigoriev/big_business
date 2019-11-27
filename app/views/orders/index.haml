@@ -1,0 +1,21 @@
+- content_for :heading do
+  Orders
+
+- content_for :heading_action_buttons do
+  = link_to new_order_path do
+    = tag.button('Add order', class: 'btn btn-primary')
+
+= render 'filter'
+
+%table#orders-datatable.table.js-datatable{ data: { source: orders_path(user: current_user, format: :json) } }
+  %thead
+    %th ID
+    %th Title
+    %th Status
+    %th Price
+    %th Cost
+    %th Profit
+    %th Invoice number
+    %th Invoice date
+    %th
+  %tbody

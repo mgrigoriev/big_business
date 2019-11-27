@@ -4,7 +4,7 @@ class Filter {
   constructor() {
     // Selectors
     this.filterOptionsWrapperSelector = '.js-filter__options-wrapper';
-    this.filterOptionsSelector = '.js-clients__filter-option';
+    this.filterOptionsSelector = '.js-filter__option';
     this.resetLinkSelector = '.js-filter__reset-link';
 
     // Bind 'this'

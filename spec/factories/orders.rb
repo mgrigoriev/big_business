@@ -18,6 +18,7 @@ end
 #
 #  id                    :bigint(8)        not null, primary key
 #  client_id             :bigint(8)        not null
+#  slug                  :string
 #  title                 :string
 #  status                :enum             default("pending"), not null
 #  invoice_number        :integer(4)

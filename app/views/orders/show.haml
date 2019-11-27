@@ -1,0 +1,15 @@
+- content_for :heading do
+  = @order.title
+
+- content_for :heading_action_buttons do
+  = manage_buttons_for(@order, edit_path: edit_order_path(@order), destroy_path: order_path(@order))
+
+%table.table
+  %tr
+    %th{ style: 'width: 20%' } Client:
+    %td= @order.client.decorate.link
+  %tr
+    %th Title:
+    %td= @order.title
+
+-#= render 'comments', target: @order

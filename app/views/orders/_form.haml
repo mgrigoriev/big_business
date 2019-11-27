@@ -1,0 +1,8 @@
+.col-md-5.well
+  = simple_form_for @order do |f|
+    = f.association :client
+    = f.input :title
+
+    .form-group
+      = f.button :submit,'Save', class: 'btn btn-primary'
+      = link_to 'Cancel', :back, class: 'btn btn-secondary float-right'

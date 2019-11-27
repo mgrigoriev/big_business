@@ -10,6 +10,7 @@ import * as DataTables from 'datatables.net-bs4'
 import 'bootstrap'
 import './bs_tooltips'
 import './client_datatable'
+import './order_datatable'
 import './filter'
 import '../stylesheets/application.scss'
 

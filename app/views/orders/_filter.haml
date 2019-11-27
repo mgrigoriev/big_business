@@ -1,0 +1,9 @@
+.card.filter.js-orders__filter
+  .card-header
+    Filter
+    .float-sm-right
+      = link_to 'Reset filter', nil, class: 'js-filter__reset-link'
+  .card-body.js-filter__options-wrapper
+    %form.js-orders__filter-form
+      .form-group
+        %input.form-control.js-filter__option.js-orders__filter-term#filter-term{ placeholder: 'Search orders by title', value: "#{@filter_params[:term]}" }

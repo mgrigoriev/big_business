@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
 
     create_table :orders do |t|
       t.references :client, foreign_key: true, null: false
+      t.string :slug
       t.string :title
       t.column :status, :orders_status, null: false, default: 'pending', index: true
       t.integer :invoice_number

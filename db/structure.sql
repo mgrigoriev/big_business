@@ -78,6 +78,7 @@ ALTER SEQUENCE public.clients_id_seq OWNED BY public.clients.id;
 CREATE TABLE public.orders (
     id bigint NOT NULL,
     client_id bigint NOT NULL,
+    slug character varying,
     title character varying,
     status public.orders_status DEFAULT 'pending'::public.orders_status NOT NULL,
     invoice_number integer,

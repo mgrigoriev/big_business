@@ -1,15 +1,34 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   monetize :price_cents
   monetize :cost_cents
   monetize :payed_amount_cents
+  monetize :profit_cents
 
   enum status: { pending: 'pending', in_progress: 'in_progress', done: 'done' }
 
   validates :title, presence: true
 
   belongs_to :client
+
+  scope :with_aggregates, -> { select('*', '(price_cents - cost_cents) AS profit_cents') }
+
+  scope :search, lambda { |filter|
+    if filter[:term].present?
+      where(
+        'title ILIKE ?',
+        "%#{filter[:term]}%"
+      )
+    end
+  }
+
+  def profit_cents
+    price_cents - cost_cents
+  end
 end
 
 # == Schema Information
@@ -18,6 +37,7 @@ end
 #
 #  id                    :bigint(8)        not null, primary key
 #  client_id             :bigint(8)        not null
+#  slug                  :string
 #  title                 :string
 #  status                :enum             default("pending"), not null
 #  invoice_number        :integer(4)

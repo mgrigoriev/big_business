@@ -12,16 +12,16 @@ class Client < ApplicationRecord
 
   scope :search, lambda { |filter|
     if filter[:term].present?
-      where_sql = <<~SQL.squish
-        clients.title ILIKE ? OR
-        clients.name ILIKE ? OR
-        clients.email ILIKE ? OR
-        clients.id::TEXT LIKE ?
-      SQL
-
-      where(where_sql, "%#{filter[:term]}%", "%#{filter[:term]}%", "%#{filter[:term]}%", filter[:term])
+      where(
+        'title ILIKE ? OR name ILIKE ? OR email ILIKE ? OR id::TEXT LIKE ?',
+        "%#{filter[:term]}%", "%#{filter[:term]}%", "%#{filter[:term]}%", filter[:term]
+      )
     end
   }
+
+  def to_label
+    title
+  end
 end
 
 # == Schema Information
