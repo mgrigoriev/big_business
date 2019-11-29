@@ -122,7 +122,7 @@ GEM
       i18n (>= 0.7)
       multi_json
       request_store (>= 1.0)
-    hamlit (2.10.0)
+    hamlit (2.10.1)
       temple (>= 0.8.2)
       thor
       tilt
