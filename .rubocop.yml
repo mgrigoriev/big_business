@@ -83,7 +83,7 @@ Naming/PredicateName:
   NamePrefix:
     - is_
   # Predicate name prefixes that should be removed
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
 
 Naming/RescuedExceptionsVariableName:
