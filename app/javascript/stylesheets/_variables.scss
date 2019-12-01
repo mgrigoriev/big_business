@@ -1,8 +1,19 @@
-// Bootstrap variables override + custom variables
-//
-// Example:
-// $body-bg: #eee;
+// Bootstrap variables override, and custom variables
 
-$light-yellow: #fef9b8;
+$font-size-base: .9rem;
+
+$primary: #1e22aa;
+
+$c-dark-blue: #00c;
+$c-light-yellow: #fef9b8;
+$c-light-green: #b9f6ca;
+$c-light-blue: #bbdefb;
+$c-light-orange: #ffecb3;
+
+// Links
+$link-color: $c-dark-blue !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 10%) !default;
+$link-hover-decoration: none !default;
 
 $btn-focus-box-shadow: none !important;

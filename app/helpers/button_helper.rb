@@ -5,7 +5,7 @@ module ButtonHelper
     edit_button = edit_button_for(resource, path: edit_path)
     destroy_button = destroy_button_for(resource, path: destroy_path)
 
-    tag.span("#{edit_button} #{destroy_button}".html_safe, class: 'text-nowrap')
+    tag.div("#{edit_button} #{destroy_button}".html_safe, class: 'manage-btn-group')
   end
 
   def edit_button_for(resource, path:)

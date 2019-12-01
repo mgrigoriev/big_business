@@ -1,9 +1,12 @@
 .navbar-dark {
-  background-color: $gray-700;
+  background-color: $gray-800;
 }
 
 .navbar {
   .navbar__logo {
+    text-decoration: none;
+    color: $gray-100;
+    font-size: 1.5rem;
     font-weight: 500;
   }
 
@@ -13,6 +16,7 @@
     &:hover {
       text-decoration: none;
       color: $gray-100;
+      font-size: 1.1rem;
     }
   }
 }
@@ -21,10 +25,34 @@
   margin-bottom: 40px;
 
   .filter__options-wrapper--active {
-    background-color: $light-yellow;
+    background-color: $c-light-yellow;
   }
 
   .filter__option--active {
     border: 2px solid $blue;
+  }
+}
+
+.status {
+  padding: 5px 10px;
+}
+
+.status-pending {
+  background-color: $c-light-orange;
+}
+
+.status-in-progress {
+  background-color: $c-light-blue;
+}
+
+.status-done {
+  background-color: $c-light-green;
+}
+
+.manage-btn-group {
+  text-wrap: none;
+
+  a:first-child {
+    padding-right: 3px;
   }
 }

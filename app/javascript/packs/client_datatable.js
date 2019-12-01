@@ -36,7 +36,7 @@ class ClientDatatable {
         { data: 'name' },
         { data: 'email' },
         { data: 'phone' },
-        { data: 'actions', orderable: false }
+        { data: 'actions', orderable: false, className: 'text-right' }
       ],
       fnDrawCallback: () => {
         // const response = this.api().ajax.json();

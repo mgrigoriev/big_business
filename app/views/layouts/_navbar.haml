@@ -1,10 +1,10 @@
 .navbar.navbar-dark.shadow-lg.mb-3
   .container.d-flex.flex-column.flex-md-row.align-items-center.pt-2.pb-3
     %h5.my-0.mr-md-auto.font-weight-normal
-      = link_to 'Big Business', root_path, class: 'navbar__logo navbar__link'
+      = link_to 'Big Business', root_path, class: 'navbar__logo'
     %nav.my-2.my-md-0.mr-md-3
-      = link_to 'Clients', clients_path, class: 'p-2 navbar__link'
       = link_to 'Orders', orders_path, class: 'p-2 navbar__link'
+      = link_to 'Clients', clients_path, class: 'p-2 navbar__link'
       = link_to 'Reports', '#', class: 'p-2 navbar__link'
 
     - if user_signed_in?

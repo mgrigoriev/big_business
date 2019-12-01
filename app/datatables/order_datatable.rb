@@ -26,15 +26,17 @@ class OrderDatatable < AjaxDatatablesRails::ActiveRecord
 
   def data
     records.map do |record|
+      record = record.decorate
+
       {
         id: record.id,
-        title: record.decorate.link,
-        status: record.status,
+        title: record.link_with_client_subtitle,
+        status: record.status_badge,
         price: record.price.format,
         cost: record.cost.format,
         profit: record.profit.format,
         invoice_number: record.invoice_number,
-        invoice_date: record.invoice_date,
+        invoice_date: record.formatted_invoice_date,
         actions: manage_buttons_for(record, edit_path: edit_order_path(record), destroy_path: order_path(record)),
         DT_RowId: record.id
       }
@@ -42,6 +44,8 @@ class OrderDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records # rubocop:disable Naming/AccessorMethodName
-    Order.with_aggregates.search(params[:filter])
+    Order.includes(:client)
+         .with_aggregates
+         .search(params[:filter])
   end
 end

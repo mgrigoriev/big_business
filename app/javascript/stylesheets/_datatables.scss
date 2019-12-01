@@ -22,7 +22,13 @@ th {
   }
 }
 
+.table thead th {
+  border-bottom: 0;
+}
+
 .dataTable th {
+  background-color: $gray-300;
+
   &::before,
   &::after {
     font-family: Arial, Helvetica, sans-serif;
@@ -30,6 +36,6 @@ th {
 
   &.sorting_desc,
   &.sorting_asc {
-    background-color: $gray-300;
+    background-color: $gray-400;
   }
 }
