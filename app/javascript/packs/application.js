@@ -10,6 +10,7 @@ import * as DataTables from 'datatables.net-bs4'
 import 'bootstrap'
 import 'select2'
 import 'select2/dist/css/select2.css'
+import 'select2-bootstrap-theme/dist/select2-bootstrap.css'
 
 import './bs_tooltips'
 import './select2'

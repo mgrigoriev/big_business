@@ -1,10 +1,13 @@
-.col-md-5.well
-  = simple_form_for @client do |f|
-    = f.input :title
-    = f.input :name
-    = f.input :email
-    = f.input :phone
-
-    .form-group
-      = f.button :submit,'Save', class: 'btn btn-primary'
-      = link_to 'Cancel', :back, class: 'btn btn-secondary float-right'
+.row
+  .col-md-6
+    .card
+      = simple_form_for @client do |f|
+        .card-body
+          = f.input :title
+          = f.input :name
+          = f.input :email
+          = f.input :phone
+        .card-footer.py-3
+          = f.button :submit,'Save', class: 'btn btn-lg btn-primary mr-2 px-5'
+          or
+          = link_to 'Back to client list', clients_path, class: 'text-muted'
