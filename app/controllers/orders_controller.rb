@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
-      :client_id, :title, :status, :invoice_number, :invoice_date, :price_cents, :cost_cents, :payed_amount_cents
+      :client_id, :title, :status, :invoice_number, :invoice_date, :price, :cost, :payed_amount
     )
   end
 

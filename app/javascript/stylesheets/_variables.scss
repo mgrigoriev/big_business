@@ -1,4 +1,5 @@
-// Bootstrap variables override, and custom variables
+// Override Bootstrap variables specified in node_modules/bootstrap/scss/_variables.scss
+// and define custom variables
 
 $font-size-base: .9rem;
 
@@ -17,3 +18,7 @@ $link-hover-color: darken($link-color, 10%) !default;
 $link-hover-decoration: none !default;
 
 $btn-focus-box-shadow: none !important;
+
+$form-feedback-valid-color: #ccc;
+$form-feedback-icon-valid: '';
+$form-feedback-icon-invalid: '';

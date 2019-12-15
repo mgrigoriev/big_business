@@ -1,8 +1,15 @@
-.col-md-5.well
-  = simple_form_for @order do |f|
-    = f.association :client
-    = f.input :title
+.card.orders__form-wrapper
+  .card-body
+    = simple_form_for @order, wrapper: :input_group do |f|
+      = f.association :client, input_html: { class: 'select2' }
+      = f.input :title
+      = f.input :status, collection: order_status_options_for_select
+      = f.input :invoice_number
+      = f.input :invoice_date
+      = f.input :price, prepend: '$', input_html: { value: format_money_for_input(@order.price) }
+      = f.input :cost, prepend: '$', input_html: { value: format_money_for_input(@order.cost) }
+      = f.input :payed_amount, prepend: '$', input_html: { value: format_money_for_input(@order.payed_amount) }
 
-    .form-group
-      = f.button :submit,'Save', class: 'btn btn-primary'
-      = link_to 'Cancel', :back, class: 'btn btn-secondary float-right'
+      .form-group
+        = f.button :submit,'Save', class: 'btn btn-primary'
+        = link_to 'Cancel', orders_path, class: 'btn btn-secondary float-right'

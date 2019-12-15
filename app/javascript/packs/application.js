@@ -8,10 +8,15 @@ import * as ActiveStorage from '@rails/activestorage'
 import * as DataTables from 'datatables.net-bs4'
 
 import 'bootstrap'
+import 'select2'
+import 'select2/dist/css/select2.css'
+
 import './bs_tooltips'
+import './select2'
 import './client_datatable'
 import './order_datatable'
 import './filter'
+
 import '../stylesheets/application.scss'
 
 Rails.start();
