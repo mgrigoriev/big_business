@@ -11,7 +11,7 @@ gem 'puma', '~> 4.3'
 
 gem 'sass-rails', '~> 6'
 gem 'webpacker', '~> 4.2'
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.10'
 gem 'ajax-datatables-rails'
 
 gem 'bootsnap', '>= 1.4.2', require: false
