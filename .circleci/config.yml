@@ -24,6 +24,10 @@ jobs:
       - checkout
 
       - run:
+          name: Clean up and update package lists
+          command: sudo rm -rf /var/lib/apt/lists/* && sudo apt update
+
+      - run:
           name: Import PostgreSQL repository signing key
           command: wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
