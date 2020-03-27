@@ -12,4 +12,30 @@
     %th Title:
     %td= @order.title
 
--#= render 'comments', target: @order
+  %tr
+    %th Status:
+    %td= @order.status_badge
+
+  %tr
+    %th Invoice number:
+    %td= @order.invoice_number
+
+  %tr
+    %th Invoice date:
+    %td= @order.formatted_invoice_date
+
+  %tr
+    %th Price:
+    %td= @order.price.format
+
+  %tr
+    %th Cost:
+    %td= @order.cost.format
+
+  %tr
+    %th Profit:
+    %td= @order.profit.format
+
+  %tr
+    %th Paid amount:
+    %td= @order.payed_amount.format
