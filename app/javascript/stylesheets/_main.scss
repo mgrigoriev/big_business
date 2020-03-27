@@ -6,7 +6,7 @@
   .navbar__logo {
     text-decoration: none;
     color: $gray-100;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
   }
 
@@ -16,7 +16,7 @@
     &:hover {
       text-decoration: none;
       color: $gray-100;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   }
 }
@@ -35,6 +35,7 @@
 
 .status {
   padding: 5px 10px;
+  white-space: nowrap;
 }
 
 .status-pending {
@@ -50,7 +51,7 @@
 }
 
 .manage-btn-group {
-  text-wrap: none;
+  white-space: nowrap;
 
   a:first-child {
     padding-right: 3px;
