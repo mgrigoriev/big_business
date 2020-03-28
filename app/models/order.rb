@@ -19,9 +19,9 @@ class Order < ApplicationRecord
 
   scope :search, lambda { |filter|
     if filter[:term].present?
-      where(
-        'title ILIKE ?',
-        "%#{filter[:term]}%"
+      joins(:client).where(
+        'orders.title ILIKE ? OR clients.title ILIKE ? OR invoice_number::TEXT LIKE ? OR orders.id::TEXT LIKE ?',
+        "%#{filter[:term]}%", "%#{filter[:term]}%", filter[:term], filter[:term]
       )
     end
   }
