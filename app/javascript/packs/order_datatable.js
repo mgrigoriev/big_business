@@ -3,6 +3,7 @@ class OrderDatatable {
     // Selectors
     this.dataTableSelector = '#orders-datatable';
     this.termFieldSelector = '.js-orders__filter-term';
+    this.statusFieldSelector = '.js-orders__filter-status';
 
     // Bind 'this'
     this.init = this.init.bind(this);
@@ -21,7 +22,7 @@ class OrderDatatable {
       ajax: {
         url: $(this.dataTableSelector).data('source'),
         data: data => {
-          data.filter = { term: $(this.termFieldSelector).val() }; // eslint-disable-line
+          data.filter = { term: $(this.termFieldSelector).val(), status: $(this.statusFieldSelector).val() }; // eslint-disable-line
         }
       },
       pagingType: 'full_numbers',

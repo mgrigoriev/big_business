@@ -10,7 +10,7 @@ class Client < ApplicationRecord
 
   scope :by_title, -> { order(:title) }
 
-  scope :search, lambda { |filter|
+  scope :search, lambda { |filter = {}|
     if filter[:term].present?
       where(
         'title ILIKE ? OR name ILIKE ? OR email ILIKE ? OR id::TEXT LIKE ?',

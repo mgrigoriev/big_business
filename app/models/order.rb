@@ -17,13 +17,19 @@ class Order < ApplicationRecord
 
   scope :with_aggregates, -> { select('*', '(price_cents - cost_cents) AS profit_cents') }
 
-  scope :search, lambda { |filter|
+  scope :search, lambda { |filter = {}|
+    items = all
+
     if filter[:term].present?
-      joins(:client).where(
+      items = items.joins(:client).where(
         'orders.title ILIKE ? OR clients.title ILIKE ? OR invoice_number::TEXT LIKE ? OR orders.id::TEXT LIKE ?',
         "%#{filter[:term]}%", "%#{filter[:term]}%", filter[:term], filter[:term]
       )
     end
+
+    items = items.where(status: filter[:status]) if filter[:status].present?
+
+    items
   }
 
   def profit_cents

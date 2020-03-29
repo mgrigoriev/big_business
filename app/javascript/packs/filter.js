@@ -18,9 +18,9 @@ class Filter {
     $(document).on('paste', this.filterOptionsSelector, this.redraw);
 
     if (App.env === 'test') {
-      $(document).on('keyup', this.filterOptionsSelector, this.redraw);
+      $(document).on('keyup change', this.filterOptionsSelector, this.redraw);
     } else {
-      $(document).on('keyup', this.filterOptionsSelector, Filter.debounce(this.redraw, 400));
+      $(document).on('keyup change', this.filterOptionsSelector, Filter.debounce(this.redraw, 400));
     }
   }
 
