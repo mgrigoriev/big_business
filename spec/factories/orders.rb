@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :order do
     client
-    sequence(:title) { |i| "Order #{i}" }
+    title { Faker::Commerce.unique.product_name }
     sequence(:invoice_number) { |i| i + 100 }
     invoice_date { Date.current }
     price_cents { Faker::Number.within(range: 500_000..900_000) }
