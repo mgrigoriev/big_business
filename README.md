@@ -7,3 +7,5 @@ Starter ERP/CRM app written with Ruby on Rails. Manage your clients and orders l
 Demo
 ----
 https://big-business-app.herokuapp.com/
+
+[![](public/screenshot.png)](https://big-business-app.herokuapp.com/)
