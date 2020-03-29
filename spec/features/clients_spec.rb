@@ -15,7 +15,7 @@ feature 'User can manage clients:' do
 
     scenario 'creates a new client', js: true do
       fill_in 'Title', with: 'The first client'
-      fill_in 'Name',  with: 'John'
+      fill_in 'Name', with: 'John'
       fill_in 'Email', with: 'john@example.com'
       fill_in 'Phone', with: '111222333'
       click_on 'Save'
@@ -57,7 +57,7 @@ feature 'User can manage clients:' do
       wait_for_ajax
 
       within '.js-datatable--filtered' do
-        expect(page).to     have_content clients.third.title
+        expect(page).to have_content clients.third.title
         expect(page).not_to have_content clients.first.title
         expect(page).not_to have_content clients.second.title
       end
@@ -68,7 +68,7 @@ feature 'User can manage clients:' do
       wait_for_ajax
 
       within '.js-datatable--filtered' do
-        expect(page).to     have_content clients.first.title
+        expect(page).to have_content clients.first.title
         expect(page).not_to have_content clients.second.title
         expect(page).not_to have_content clients.third.title
       end
@@ -79,7 +79,7 @@ feature 'User can manage clients:' do
       wait_for_ajax
 
       within '.js-datatable--filtered' do
-        expect(page).to     have_content clients.second.title
+        expect(page).to have_content clients.second.title
         expect(page).not_to have_content clients.first.title
         expect(page).not_to have_content clients.third.title
       end
@@ -98,7 +98,7 @@ feature 'User can manage clients:' do
       click_on "edit-#{client.id}"
 
       fill_in 'Title', with: 'The first client'
-      fill_in 'Name',  with: 'John'
+      fill_in 'Name', with: 'John'
       fill_in 'Email', with: 'john@example.com'
       fill_in 'Phone', with: '111222333'
       click_on 'Save'

@@ -64,8 +64,8 @@ feature 'User can manage orders:' do
 
       within '.js-datatable--filtered' do
         expect(page).to have_content orders.third.title
-        expect(page).to_not have_content orders.first.title
-        expect(page).to_not have_content orders.second.title
+        expect(page).not_to have_content orders.first.title
+        expect(page).not_to have_content orders.second.title
       end
     end
 
@@ -75,8 +75,8 @@ feature 'User can manage orders:' do
 
       within '.js-datatable--filtered' do
         expect(page).to have_content orders.first.title
-        expect(page).to_not have_content orders.second.title
-        expect(page).to_not have_content orders.third.title
+        expect(page).not_to have_content orders.second.title
+        expect(page).not_to have_content orders.third.title
       end
     end
 
@@ -86,8 +86,8 @@ feature 'User can manage orders:' do
 
       within '.js-datatable--filtered' do
         expect(page).to have_content orders.second.title
-        expect(page).to_not have_content orders.first.title
-        expect(page).to_not have_content orders.third.title
+        expect(page).not_to have_content orders.first.title
+        expect(page).not_to have_content orders.third.title
       end
     end
 
@@ -97,8 +97,8 @@ feature 'User can manage orders:' do
 
       within '.js-datatable--filtered' do
         expect(page).to have_content orders.third.title
-        expect(page).to_not have_content orders.first.title
-        expect(page).to_not have_content orders.second.title
+        expect(page).not_to have_content orders.first.title
+        expect(page).not_to have_content orders.second.title
       end
     end
 
@@ -118,7 +118,7 @@ feature 'User can manage orders:' do
 
     background { visit orders_path }
 
-    scenario "edits order", js: true do
+    scenario 'edits order', js: true do
       click_on "edit-#{order.id}"
 
       select another_client.title, from: 'Client'
@@ -129,7 +129,7 @@ feature 'User can manage orders:' do
       fill_in 'Cost', with: '200'
       click_on 'Save'
 
-      expect(current_path).to eq order_path(order)
+      expect(page).to have_current_path order_path(order), ignore_query: true
 
       [
         another_client.title,
@@ -157,8 +157,8 @@ feature 'User can manage orders:' do
         click_on "delete-#{order.id}"
       end
 
-      expect(current_path).to eq orders_path
-      expect(page).to_not have_content order.title
+      expect(page).to have_current_path orders_path, ignore_query: true
+      expect(page).not_to have_content order.title
     end
   end
 end
