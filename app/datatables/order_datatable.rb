@@ -17,7 +17,7 @@ class OrderDatatable < AjaxDatatablesRails::ActiveRecord
       status: { source: 'Order.status' },
       price: { source: 'Order.price_cents' },
       cost: { source: 'Order.cost_cents' },
-      profit: { source: 'Order.profit' },
+      profit: { source: 'profit_cents' },
       invoice_number: { source: 'Order.invoice_number' },
       invoice_date: { source: 'Order.invoice_date' },
       actions: {}
