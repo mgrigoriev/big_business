@@ -3,6 +3,10 @@
 class ApplicationController < ActionController::Base
   before_action :set_js_variables
 
+  def demo_mode?
+    true
+  end
+
   private
 
   def set_js_variables
