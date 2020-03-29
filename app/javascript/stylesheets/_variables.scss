@@ -1,10 +1,26 @@
 // Override Bootstrap variables specified in node_modules/bootstrap/scss/_variables.scss
 // and define custom variables
 
-$font-size-base: .8rem;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1300px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1400px
+) !default;
+
+$font-size-base: 0.8rem;
 
 $primary: #1e22aa;
-
 $c-dark-blue: #00c;
 $c-light-yellow: #fef9b8;
 $c-light-green: #b9f6ca;
