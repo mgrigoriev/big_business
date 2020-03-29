@@ -1,13 +1,7 @@
-# Create demo user
-User.create!(
-  email: 'demo@example.com',
-  name: 'J. Doe',
-  password: 'password',
-  password_confirmation: 'password'
-)
+demo_email = 'demo@example.com'
+demo_password = 'password'
 
-# Clients and orders
-clients = [
+clients_data = [
   {
     attributes: {
       title: 'Pied piper',
@@ -95,8 +89,12 @@ clients = [
   }
 ]
 
+# Create demo user
+User.create_with(name: 'J. Doe', password: demo_password, password_confirmation: demo_password)
+    .find_or_create_by(email: demo_email)
+
 # Create clients and orders from hash
-clients.each do |client_data|
+clients_data.each do |client_data|
   client = Client.create!(client_data[:attributes])
 
   client_data[:orders].each do |order_data|
