@@ -102,14 +102,14 @@ feature 'User can manage orders:' do
       end
     end
 
-    # scenario 'by status', js: true do
-    #   orders.first.update(status: :done)
-    #   select 'Done', from: 'status'
-    #
-    #   expect(page).to have_content orders.first.title
-    #   expect(page).to_not have_content orders.second.title
-    #   expect(page).to_not have_content orders.third.title
-    # end
+    scenario 'by status', js: true do
+      orders.first.update(status: :done)
+      select 'Done', from: 'status'
+
+      expect(page).to have_content orders.first.title
+      expect(page).to_not have_content orders.second.title
+      expect(page).to_not have_content orders.third.title
+    end
   end
 
   describe 'editing' do
