@@ -2,6 +2,7 @@
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_user!, only: :destroy
   before_action :set_order, only: %i[show edit update destroy]
   before_action :set_filter_params, only: :index
 
@@ -48,6 +49,12 @@ class OrdersController < ApplicationController
     params.require(:order).permit(
       :client_id, :title, :status, :invoice_number, :invoice_date, :price, :cost, :payed_amount
     )
+  end
+
+  def authorize_user!
+    return unless demo_mode?
+
+    redirect_to orders_path, flash: { info: 'Sorry, the requested action is not permitted in demo mode.' }
   end
 
   def set_order

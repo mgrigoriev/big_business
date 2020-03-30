@@ -2,6 +2,7 @@
 
 class ClientsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_user!, only: :destroy
   before_action :set_client, only: %i[show edit update destroy]
   before_action :set_filter_params, only: :index
 
@@ -46,6 +47,12 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(:title, :name, :email, :phone)
+  end
+
+  def authorize_user!
+    return unless demo_mode?
+
+    redirect_to clients_path, flash: { info: 'Sorry, the requested action is not permitted in demo mode.' }
   end
 
   def set_client
