@@ -1,0 +1,18 @@
+- content_for :heading do
+  Top clients
+
+.row
+  .col-md-8
+    %table.table
+      %thead
+        %th Client
+        %th.text-right Sum of all orders, $
+        %th.text-right %
+      %tbody
+        - @report.items.each do |client_title, price_cents, percentage|
+          %tr
+            %td= client_title
+            %td.text-right= price_cents.format
+            %td.text-right= percentage
+  .col-md-4
+    = pie_chart @report.chart_data, height: '300px', suffix: '%'

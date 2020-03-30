@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   resources :clients
   resources :orders
 
+  namespace :reports do
+    resources :top_clients, only: :index
+  end
+
   root 'orders#index'
 end
