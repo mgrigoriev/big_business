@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      redirect_to @order, flash: { success: 'Order has been created successfully' }
+      redirect_to @order, flash: { success: 'Order has been created successfully.' }
     else
       render :new
     end
@@ -32,15 +32,18 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to @order, flash: { success: 'Order has been updated successfully' }
+      redirect_to @order, flash: { success: 'Order has been updated successfully.' }
     else
       render :edit
     end
   end
 
   def destroy
-    @order.destroy
-    redirect_to orders_path, flash: { success: 'Order has been deleted successfully' }
+    if @order.destroy
+      redirect_to orders_path, flash: { success: 'Order has been deleted successfully.' }
+    else
+      redirect_to orders_path, flash: { error: @order.errors.full_messages.first }
+    end
   end
 
   private

@@ -32,15 +32,18 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      redirect_to @client, flash: { success: 'Client has been updated successfully' }
+      redirect_to @client, flash: { success: 'Client has been updated successfully.' }
     else
       render :edit
     end
   end
 
   def destroy
-    @client.destroy
-    redirect_to clients_path, flash: { success: 'Client has been deleted successfully' }
+    if @client.destroy
+      redirect_to clients_path, flash: { success: 'Client has been deleted successfully.' }
+    else
+      redirect_to clients_path, flash: { error: @client.errors.full_messages.first }
+    end
   end
 
   private
