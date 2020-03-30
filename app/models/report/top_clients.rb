@@ -25,7 +25,7 @@ module Report
     end
 
     def total_price_sum
-      @total_price_cents_sum ||= Order.sum(:price_cents)
+      @total_price_sum ||= Order.sum(:price_cents)
     end
   end
 end
