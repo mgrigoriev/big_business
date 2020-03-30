@@ -107,8 +107,8 @@ feature 'User can manage orders:' do
       select 'Done', from: 'status'
 
       expect(page).to have_content orders.first.title
-      expect(page).to_not have_content orders.second.title
-      expect(page).to_not have_content orders.third.title
+      expect(page).not_to have_content orders.second.title
+      expect(page).not_to have_content orders.third.title
     end
   end
 
