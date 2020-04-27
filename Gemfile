@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '~> 2.6.3'
 
 gem 'rails', '~> 6.0.2'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -44,6 +44,11 @@ group :development, :test do
   gem 'scss_lint', require: false
   gem 'rspec-rails', '~> 4.0'
   gem 'factory_bot_rails'
+
+  # Moved graphql to :development and :test groups
+  # for security reasons until authentication is implemented
+  gem 'graphql'
+  gem 'graphiql-rails'
 end
 
 group :development do
