@@ -8,5 +8,6 @@ module Types
     field :name, String, null: true
     field :email, String, null: true
     field :phone, String, null: true
+    field :orders, [Types::OrderType], null: true
   end
 end
