@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BigBusinessSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
