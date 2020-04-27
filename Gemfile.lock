@@ -122,6 +122,10 @@ GEM
       i18n (>= 0.7)
       multi_json
       request_store (>= 1.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.10.8)
     hamlit (2.11.0)
       temple (>= 0.8.2)
       thor
@@ -350,6 +354,8 @@ DEPENDENCIES
   faker
   friendly_id
   gon
+  graphiql-rails
+  graphql
   hamlit
   jbuilder (~> 2.10)
   listen (>= 3.0.5, < 3.3)
@@ -384,4 +390,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

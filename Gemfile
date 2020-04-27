@@ -8,6 +8,7 @@ ruby '~> 2.6.3'
 gem 'rails', '~> 6.0.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.3'
+gem 'graphql'
 
 gem 'sass-rails', '~> 6'
 gem 'webpacker', '~> 5.0'
@@ -51,6 +52,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'graphiql-rails'
 end
 
 group :test do
