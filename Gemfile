@@ -48,6 +48,7 @@ group :development, :test do
   # Moved graphql to :development and :test groups
   # for security reasons until authentication is implemented
   gem 'graphql'
+  gem 'graphiql-rails'
 end
 
 group :development do
@@ -55,7 +56,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'graphiql-rails'
 end
 
 group :test do
