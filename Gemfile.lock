@@ -125,7 +125,7 @@ GEM
     graphiql-rails (1.7.0)
       railties
       sprockets-rails
-    graphql (1.10.8)
+    graphql (1.12.6)
     hamlit (2.11.0)
       temple (>= 0.8.2)
       thor
